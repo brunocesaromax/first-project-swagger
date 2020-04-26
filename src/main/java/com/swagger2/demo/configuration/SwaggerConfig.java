@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    public static final String LANGUAGE = "language";
+    public static final String PROGRAMMING_LANGUAGE = "programming languages";
 
     @Bean
     public Docket api() {
@@ -25,14 +25,14 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.swagger2.demo.controller"))
                 .paths(PathSelectors.any())
                 .build()
-                .tags(new Tag(LANGUAGE, "Language Management"))
+                .tags(new Tag(PROGRAMMING_LANGUAGE, "Programming Languages Management"))
                 .apiInfo(apiEndPointsInfo());
     }
 
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder()
-                .title("Language API")
-                .description("Language Management REST API")
+                .title("Programming Languages API")
+                .description("Programming Languages Management REST API")
                 .version("1.0-SNAPSHOT")
                 .build();
     }
