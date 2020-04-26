@@ -1,5 +1,6 @@
 package com.swagger2.demo.controller;
 
+import com.swagger2.demo.configuration.SwaggerConfig;
 import com.swagger2.demo.model.Language;
 import com.swagger2.demo.repository.ILanguageRepository;
 import io.swagger.annotations.Api;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@Api(value = "Language API", description = "Operations pertaining to Language")
+@Api(tags = SwaggerConfig.LANGUAGE)
 @RequiredArgsConstructor
 public class LanguageController {
 
@@ -30,7 +31,7 @@ public class LanguageController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     @GetMapping(value = "/languages", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Language>> getLanguages() {
+    public ResponseEntity<List<Language>> findAll() {
         final List<Language> languages = languageRepository.findAll();
         return new ResponseEntity<>(languages, HttpStatus.OK);
     }
